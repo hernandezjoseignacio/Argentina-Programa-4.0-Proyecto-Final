@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { registerReq, loginRequest, verifyToken } from "../api/auth";
+import { registerReq, loginRequest, verifyToken, getAllUser } from "../api/auth";
 import Cookies from "js-cookie";
 
 export const AuthContext = createContext();
@@ -34,7 +34,7 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  //5) Para validar el Login
+  //5) Para validar el Login (ingresar con un usuario ya creado)
   const signin = async (user) => {
     try {
       const res = await loginRequest(user);
@@ -47,7 +47,6 @@ export const AuthProvider = ({ children }) => {
   };
 
   //6) Logout
-
   const signout = () => {
     Cookies.remove("token");
     setIsAuth(false);
@@ -65,9 +64,9 @@ export const AuthProvider = ({ children }) => {
     }
   }, [errors]);
 
-  //Este useEffect es para cuando validamos cookies
+  //Este useEffect es para cuando validamos cookies (Para guardarlas)
   useEffect(() => {
-    async function verifyLogin() {
+    async function verifyLogin() { //Esta funcion es a mero efecto de poder usar la funcion asincrona verifytoken ya que no se puede colocar el async en use effect ni en la funcion arround o flecha que posee
       const cookies = Cookies.get();
       if (cookies.token) {
         try {
@@ -88,18 +87,21 @@ export const AuthProvider = ({ children }) => {
     verifyLogin();
   }, []);
 
+//TODO:---------------------------------------------MAL
+  const getUserName = async () => {
+    const res = await getAllUser();
+    console.log(res);
+    // try {
+    //   setPost(res.data);
+    // } catch (error) {
+    //   console.log(error);
+    // }
+  };
+//TODO:---------------------------------------------------
+
+
   return (
-    <AuthContext.Provider
-      value={{
-        //con esto se va a poder llamar al signup y al user desde el contexto
-        signup,
-        signin,
-        signout,
-        user,
-        isAuth,
-        errors,
-      }}
-    >
+    <AuthContext.Provider value={{ signup, signin, signout, user, getUserName, isAuth, errors }}> {/*con esto se va a poder llamar al signup y al user desde el contexto*/}
       {children}
     </AuthContext.Provider>
   );

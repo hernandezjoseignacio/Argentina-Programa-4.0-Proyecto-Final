@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose";
 
-const taskSchema = new Schema(
+const postSchema = new Schema(
   {
     title: {
       type: String,
@@ -10,10 +10,10 @@ const taskSchema = new Schema(
       type: String,
       required: true,
     },
-    completed: {
-      type: Boolean,
-      required: true,
-    },
+    // img: {
+    //   type: String,
+    //   required: true,
+    // },
     date: {
       type: Date,
       default: Date.now,
@@ -23,6 +23,10 @@ const taskSchema = new Schema(
       ref: "User",
       required: true,
     },
+    userName: {
+      type: String,
+      required: true,
+    },
   },
   {
     timestamps: true,
@@ -30,4 +34,4 @@ const taskSchema = new Schema(
   }
 );
 
-export default model("Task", taskSchema);
+export default model("Post", postSchema);

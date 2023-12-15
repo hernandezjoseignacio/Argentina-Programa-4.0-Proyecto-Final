@@ -8,5 +8,7 @@ export const registerReq = (user) => axios.post(`/register`, user);
 //creamos el loginRequest
 export const loginRequest = (user) => axios.post(`/login`, user);
 
-//creamos la verificación del token desde el fron
+export const getAllUser = () => axios.get("/allUser");
+
+//creamos la verificación del token desde el Frontend (Client)
 export const verifyToken = () => axios.get(`/verifyToken`);

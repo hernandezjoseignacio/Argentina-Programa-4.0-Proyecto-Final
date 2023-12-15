@@ -3,16 +3,16 @@ import { AuthProvider } from "./context/AuthContext";
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
 import { HomePage } from "./pages/HomePage";
-import { TaskPage } from "./pages/TaskPage";
-import { TaskFormPage } from "./pages/TaskFormPage";
+import { PostPage } from "./pages/PostPage";
+import { PostFormPage } from "./pages/PostFormPage";
 import { Profile } from "./pages/Profile";
 import { ProtectedRoutes } from "./routes/ProtectedRoutes";
-import { TaskProvider } from "./context/TaskContext";
+import { PostProvider } from "./context/PostContext";
 
 export const App = () => {
   return (
     <AuthProvider>
-      <TaskProvider>
+      <PostProvider>
         <Router>
           <Routes>
             <Route path="/" element={<HomePage />} />
@@ -20,14 +20,14 @@ export const App = () => {
             <Route path="/register" element={<Register />} />
 
             <Route element={<ProtectedRoutes />}>
-              <Route path="/task" element={<TaskPage />} />
-              <Route path="/add-task" element={<TaskFormPage />} />
-              <Route path="/task/:id" element={<TaskFormPage />} />
+              <Route path="/post" element={<PostPage />} />
+              <Route path="/add-post" element={<PostFormPage />} />
+              <Route path="/post/:id" element={<PostFormPage />} />
               <Route path="/profile" element={<Profile />} />
             </Route>
           </Routes>
         </Router>
-      </TaskProvider>
+      </PostProvider>
     </AuthProvider>
   );
 };

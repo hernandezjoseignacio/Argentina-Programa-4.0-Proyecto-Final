@@ -18,6 +18,7 @@ const userSchema = new Schema(
     },
   },
   {
+    //Para que no aparezca como __id o __version
     timestamps: true,
     versionKey: false,
   }
