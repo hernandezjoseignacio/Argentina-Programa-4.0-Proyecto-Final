@@ -18,7 +18,6 @@ export const PostCard = ({ post }) => {
 
       <p className="">{post.description}</p>
       <div className="flex justify-between">
-        {/* <p className="text-center">Autor: {post.user._id.toString()}</p> */}
         <p className="text-center">Autor: {post.userName}</p>
 
         <p className="text-end text-xl font-bold">

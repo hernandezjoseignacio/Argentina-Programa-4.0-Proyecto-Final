@@ -47,10 +47,10 @@ export const getPostById = async (req, res) => {
 //TODO: POST CREAR Publicacion
 //TODO:----------------------------------------------------------------MODIFICADO: BIEN  
 export const createPost = async (req, res) => {
-  const { title, description, date } = req.body;
+  const { title, description, img, date } = req.body;
   try {
     const userName = await findUser(req.user.id)
-    const newPost = new Post({ title, description, date, user: req.user.id, userName: userName.username /*para cuando agregamos la logica para cada usuario*/ });
+    const newPost = new Post({ title, description, img, date, user: req.user.id, userName: userName.username /*para cuando agregamos la logica para cada usuario*/ });
 
     const savedPost = await newPost.save();
     res.status(200).json(savedPost);

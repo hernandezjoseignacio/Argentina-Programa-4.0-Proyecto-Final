@@ -4,6 +4,7 @@ import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
+
 const navigation = [
   { name: "Inicio", href: "/", current: true },
   { name: "Publicaciones", href: "/post", current: true },
@@ -15,7 +16,8 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
-  const { signout } = useAuth();
+  const { signout, user } = useAuth();
+
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -67,11 +69,15 @@ export default function Navbar() {
                     <Menu.Button className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span className="absolute -inset-1.5" />
                       <span className="sr-only">Open user menu</span>
+
                       <img
-                        className="h-8 w-8 rounded-full"
-                        src="https://cdn-icons-png.flaticon.com/512/848/848006.png"
+                        className="h-12 w-12 rounded-full border-2 border-white"
+                        src= {user === null || user === " " ? "https://cdn-icons-png.flaticon.com/512/848/848006.png" : user.img}
                         alt=""
                       />
+                      
+      {/* <p>{JSON.stringify(user, null, 3)}</p> */}
+
                     </Menu.Button>
                   </div>
                   <Transition

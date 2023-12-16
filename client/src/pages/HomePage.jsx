@@ -3,9 +3,10 @@ import Navbar from "../components/Navbar";
 import { usePosts } from "../context/PostContext";
 import { PostCard } from "../components/PostCard";
 
+
 export const HomePage = () => {
   const { getAllAllPost, post, errors: postErrors } = usePosts();
-
+  
   //useEffect para traer las publicaciones cuando se ejecuta esta pagina
   useEffect(() => {
     getAllAllPost();

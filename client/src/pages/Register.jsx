@@ -52,7 +52,13 @@ export const Register = () => {
             <input type="password" {...register("password", { required: true })} placeholder="Contraseña"
               className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
             />
+            
             {errors.password && (<p className="text-red-400">La contraseña es requerida</p>)}
+
+            <input type="text" {...register("img", { required: false })} placeholder="URL de imagen de perfil"
+              className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
+            />
+
             <button type="submit"
               className="h-10 px-6 font-semibold rounded-md bg-blue-500 text-white my-3"
             >

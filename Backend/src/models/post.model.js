@@ -10,10 +10,10 @@ const postSchema = new Schema(
       type: String,
       required: true,
     },
-    // img: {
-    //   type: String,
-    //   required: true,
-    // },
+    img: {
+      type: String,
+      required: false,
+    },
     date: {
       type: Date,
       default: Date.now,

@@ -16,6 +16,11 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    img: {
+      type: String,
+      required: false,
+      trim: true,
+    },
   },
   {
     //Para que no aparezca como __id o __version

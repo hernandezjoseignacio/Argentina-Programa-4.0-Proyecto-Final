@@ -6,7 +6,7 @@ import { createAccessToken } from "../middlewares/jwt.validation.js";
 
 //---Registro de usuario---------------------------------------------
 export const register = async (req, res) => {
-  const { username, email, password } = req.body;
+  const { username, email, password, img } = req.body;
 
   //validación del usuario
   const foundUser = await User.findOne({ email });
@@ -15,7 +15,7 @@ export const register = async (req, res) => {
     //Encriptar constraseña (El numero indica las vueltas que el encriptador dará para generar la contraseña encriptada)
     const passwordHash = await bcrypt.hash(password, 10);
 
-    const newUser = new User({ email, username, password: passwordHash });
+    const newUser = new User({ email, username, password: passwordHash, img });
 
     //Guardamos el registro del usuario
     const savedUser = await newUser.save();
@@ -87,6 +87,7 @@ export const profile = async (req, res) => {
       id: userFound._id,
       username: userFound.username,
       email: userFound.email,
+      img: userFound.img,
       createdAt: userFound.createdAt,
       updatedAt: userFound.updatedAt,
     });
@@ -129,6 +130,7 @@ export const verifyToken = async (req, res) => {
       id: userFound._id,
       username: userFound.username,
       email: userFound.email,
+      img: userFound.img
     });
   });
 };

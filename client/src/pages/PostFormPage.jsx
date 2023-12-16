@@ -53,9 +53,11 @@ export const PostFormPage = () => {
             <input type="text" {...register("title")} placeholder="Titulo" autoFocus
               className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
             />
-            <textarea {...register("description")} placeholder="Descripción"
+            <input type="text" {...register("img")} placeholder="URL de la imagen" autoFocus
               className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
-              rows="3"
+            />
+            <textarea {...register("description")} placeholder="Descripción" rows="3"
+              className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
             ></textarea>
 
             
@@ -67,9 +69,7 @@ export const PostFormPage = () => {
             </form> */}
 
 
-            <button type="submit"
-              className="flex h-10 px-6 font-semibold rounded-md bg-green-900 text-white my-5"
-            >
+            <button type="submit" className="h-10 px-6 font-semibold rounded-md bg-green-900 text-white my-5" >
               Guardar
             </button>
           </form>
